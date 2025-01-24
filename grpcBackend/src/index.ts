@@ -3,6 +3,7 @@
 
 //THE PLACES WHERE WE HAVE TS IGNORE - > to infer the types we can use a package called proto-loader
 //that gives us types for the a.proto file it generates some proto types
+//move the generated types to the source folder 
 //and we can import it and good to go.
 
 import path from 'path';
