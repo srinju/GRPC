@@ -1,6 +1,10 @@
 
 //GRPC SERVER>>>
 
+//THE PLACES WHERE WE HAVE TS IGNORE - > to infer the types we can use a package called proto-loader
+//that gives us types for the a.proto file it generates some proto types
+//and we can import it and good to go.
+
 import path from 'path';
 import * as grpc from '@grpc/grpc-js';
 import  { GrpcObject, ServiceClientConstructor } from "@grpc/grpc-js"
