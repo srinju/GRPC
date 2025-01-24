@@ -7,13 +7,13 @@ import  { GrpcObject, ServiceClientConstructor } from "@grpc/grpc-js"
 import * as protoLoader from '@grpc/proto-loader';
 
 //load the proto buff file and parse the proto buff file
-const packageDefinition = protoLoader.loadSync(path.join(__dirname , './a.proto'));
+const packageDefinition = protoLoader.loadSync(path.join(__dirname , '../src/a.proto'));
 
 //we put it into a grpc function
 const personProto = grpc.loadPackageDefinition(packageDefinition);
 
 //in memory object --(irl database used)
-const PERSONS = [
+const PERSONS : any[] = [
     {
         name : "srinjoy",
         age : 45
@@ -51,7 +51,7 @@ function getPersonByName(call , callback) {
     callback(null , person);
 }
 
-const server = new grpc.Server();
+const server = new grpc.Server(); //init a new grpc server
 
 //we are adding a service to the server and telling the addPerson service will be handled by the above addPErson funciton
 //@ts-ignore
@@ -60,7 +60,7 @@ server.addService(personProto.AddressBookService.service , {
     getPersonByName : getPersonByName,
 });
 
-//it is like app.listen
+//it is like app.listen to -<  grpc://localhost:50051
 server.bindAsync('0.0.0.0:50051' , grpc.ServerCredentials.createInsecure() , () => {
     server.start();
 });
