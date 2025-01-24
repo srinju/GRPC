@@ -5,6 +5,7 @@
 //that gives us types for the a.proto file it generates some proto types
 //move the generated types to the source folder 
 //and we can import it and good to go.
+//if not getting how to get the types then see the hks grpc video last part where he infers the types
 
 import path from 'path';
 import * as grpc from '@grpc/grpc-js';
